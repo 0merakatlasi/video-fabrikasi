@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TikTok Bağlantısı</title>
+<style>body{font:16px/1.6 system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;color:#1b1a18;background:#fff}
+textarea{width:100%;height:110px;font:13px monospace}button{padding:10px 18px;border:0;border-radius:8px;background:#e8590c;color:#fff;font-weight:600;cursor:pointer}</style>
+</head><body>
+<h1>TikTok bağlantısı</h1>
+<p id="msg">Bu sayfanın adresini (tamamını) kopyalayıp Claude'a verin veya aşağıdaki kutudaki metni kopyalayın.</p>
+<textarea id="t" readonly></textarea>
+<p><button onclick="navigator.clipboard.writeText(document.getElementById('t').value);this.textContent='Kopyalandı'">Kopyala</button></p>
+<script>
+var q = new URLSearchParams(location.search);
+if (q.get('error')) { document.getElementById('msg').textContent = 'TikTok bir hata döndürdü: ' + q.get('error') + ' ' + (q.get('error_description') || ''); }
+document.getElementById('t').value = location.href;
+</script>
+</body></html>
